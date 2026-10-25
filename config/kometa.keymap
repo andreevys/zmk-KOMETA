@@ -14,10 +14,6 @@
 #define RAISE 2
 #define BT 3
 
-#define LINUX_BASE 4
-#define LINUX_LOWER 5
-#define LINUX_RAISE 6
-#define LINUX_BT 7
 
 / {
     combos {
@@ -32,7 +28,7 @@
         combo_backspace {
             timeout-ms = <50>;
             key-positions = <9 10>;
-            layers = <BASE RAISE LINUX_BASE LINUX_RAISE>;
+            layers = <BASE RAISE>;
             bindings = <&kp BACKSPACE>;
         };
 
@@ -75,7 +71,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "MAC";
+            display-name = "BASE";
             bindings = <
                 &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T        &kp Y     &kp U       &kp I       &kp O      &kp P     &mt RIGHT_BRACKET LEFT_BRACKET
                 &kp LCTRL &kp A     &kp S     &kp D     &kp F     &kp G        &kp H     &kp J       &kp K       &kp L      &kp SEMI  &mt BACKSLASH SQT
@@ -107,52 +103,13 @@
         bt_layer {
             display-name = "BT";
             bindings = <
-                &kp TAB   &to BASE     &to LINUX_BASE &out OUT_USB &out OUT_BLE &trans        &to BASE     &to LINUX_BASE &trans       &trans       &trans     &trans
+                &kp TAB   &trans       &trans        &out OUT_USB &out OUT_BLE &trans        &trans       &trans        &trans       &trans       &trans     &trans
                 &kp LCTRL &bt BT_SEL 0 &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &trans       &bt BT_CLR     &trans       &trans       &trans     &trans
                 &kp LSHFT &trans       &trans         &trans       &trans       &trans        &trans       &trans         &trans       &trans       &trans     &trans
                                             &kp LGUI   &trans       &kp SPACE    &kp RET       &trans       &kp RALT
             >;
         };
 
-        linux_base_layer {
-            display-name = "LINUX";
-            bindings = <
-                &kp TAB   &kp Q     &kp W           &kp E     &kp R     &kp T        &kp Y     &kp U           &kp I       &kp O      &kp P     &mt RIGHT_BRACKET LEFT_BRACKET
-                &kp LGUI  &kp A     &kp S           &kp D     &kp F     &kp G        &kp H     &kp J           &kp K       &kp L      &kp SEMI  &mt BACKSLASH SQT
-                &kp LSHFT &kp Z     &kp X           &kp C     &kp V     &kp B        &kp N     &kp M           &kp COMMA   &kp DOT    &kp FSLH  &mt EQUAL MINUS
-                                      &kp LCTRL      &mo LINUX_LOWER &kp SPACE &kp RET &mo LINUX_RAISE &kp RALT
-            >;
-        };
-
-        linux_lower_layer {
-            display-name = "L-LOWER";
-            bindings = <
-                &kp TAB   &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp N5       &kp NUMBER_6 &kp N7        &kp N8       &kp N9     &kp N0     &kp KP_ASTERISK
-                &kp LGUI  &kp MINUS    &kp EQUAL    &kp SEMI     &kp LBKT     &kp RBKT     &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT  &kp LBKT   &kp RBKT
-                &kp LSHFT &kp LC(Z)    &kp LC(X)    &kp LC(C)    &kp LC(V)    &trans       &kp HOME     &kp PAGE_DOWN &kp PAGE_UP  &kp END    &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS
-                                                                  &kp LCTRL    &trans       &kp SPACE    &kp RET       &trans      &kp RALT
-            >;
-        };
-
-        linux_raise_layer {
-            display-name = "L-RAISE";
-            bindings = <
-                &kp TAB   &kp C_BRIGHTNESS_DEC &kp C_BRI_INC &kp HASH  &kp DLLR  &kp PRCNT     &kp F1    &kp F2     &kp F3     &kp F4    &kp C_PP          &kp K_MUTE
-                &kp LGUI  &trans               &trans        &trans    &trans    &trans        &kp F5    &kp F6     &kp F7     &kp F8    &kp C_AC_FORWARD  &kp C_VOLUME_UP
-                &kp LSHFT &trans               &trans        &trans    &trans    &trans        &kp F9    &kp F10    &kp F11    &kp F12   &kp C_PREVIOUS    &kp C_VOLUME_DOWN
-                                                                           &kp LCTRL &trans   &kp SPACE  &kp RET   &trans       &kp RALT
-            >;
-        };
-
-        linux_bt_layer {
-            display-name = "L-BT";
-            bindings = <
-                &kp TAB   &to BASE     &to LINUX_BASE &out OUT_USB &out OUT_BLE &trans        &to BASE     &to LINUX_BASE &trans       &trans       &trans     &trans
-                &kp LGUI  &bt BT_SEL 0 &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &trans       &bt BT_CLR     &trans       &trans       &trans     &trans
-                &kp LSHFT &trans       &trans         &trans       &trans       &trans        &trans       &trans         &trans       &trans       &trans     &trans
-                                            &kp LCTRL  &trans       &kp SPACE    &kp RET       &trans       &kp RALT
-            >;
-        };
     };
 
     conditional_layers {
@@ -163,9 +120,5 @@
             then-layer = <BT>;
         };
 
-        linux_bt_layer {
-            if-layers = <LINUX_LOWER LINUX_RAISE>;
-            then-layer = <LINUX_BT>;
-        };
     };
 };

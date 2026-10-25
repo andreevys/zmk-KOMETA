@@ -19,3 +19,23 @@
 };
 
 /delete-node/ &kscan0;
+
+// Prospector "Radii" theme: light gray, no blue
+/ {
+    chosen {
+        zmk,prospector-theme = &kometa_gray_theme;
+    };
+
+    kometa_gray_theme: kometa_gray_theme {
+        compatible = "zmk,prospector-theme";
+        left-panel-bg = <0xD6D6D3>;
+        layer-text-color = <0x222222>;
+        layer-wheel-color = <0x222222>;
+        mod-panel-bg = <0x9A9A97>;
+        mod-active-color = <0xFFFFFF>;
+        mod-inactive-color = <0x6E6E6B>;
+        battery-panel-bg = <0xBDBDB9>;
+        arc-bg = <0x8F8F8B>;
+        arc-indicator = <0x2A2A2A>;
+    };
+};

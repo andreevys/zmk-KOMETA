@@ -2,16 +2,17 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: carrefinho
-      url-base: https://github.com/carrefinho
+    - name: andreevys
+      url-base: https://github.com/andreevys
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: 8a44ef109ae301ce084b32dd5fe25200da9e402f
       import: app/west.yml
     - name: prospector-zmk-module
-      remote: carrefinho
-      # feat/new-status-screens (Zephyr 4.1 compatible)
-      revision: ed98221f3b52b7066dbb10ba3af8a29150b93a5a
+      remote: andreevys
+      # fork of carrefinho/prospector-zmk-module feat/new-status-screens,
+      # branch "kometa": USB/BT indicator, no blue
+      revision: 931a17d9fd39c1a69859292e1f6bb11e8721751d
   self:
     path: config

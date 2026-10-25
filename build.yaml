@@ -14,7 +14,7 @@ include:
     artifact-name: kometa_left_peripheral
   - board: xiao_ble//zmk
     shield: kometa_dongle prospector_adapter
-    cmake-args: -DCONFIG_PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR=n -DCONFIG_PROSPECTOR_FIXED_BRIGHTNESS=60 -DCONFIG_PROSPECTOR_STATUS_SCREEN_RADII=y -DCONFIG_PROSPECTOR_MODIFIER_OS_GENERIC=y
+    cmake-args: -DCONFIG_PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR=n -DCONFIG_PROSPECTOR_FIXED_BRIGHTNESS=35 -DCONFIG_PROSPECTOR_STATUS_SCREEN_RADII=y -DCONFIG_PROSPECTOR_MODIFIER_OS_GENERIC=y
     artifact-name: kometa_dongle_prospector
   - board: xiao_ble//zmk
     shield: settings_reset

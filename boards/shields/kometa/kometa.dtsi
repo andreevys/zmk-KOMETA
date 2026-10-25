@@ -1,6 +1,12 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 
+// P0.09 / P0.10 are NFC pins by default; the matrix uses them
+// (left: row3/row2, right: col1/col2), so switch them to plain GPIO.
+&uicr {
+    nfct-pins-as-gpios;
+};
+
 / {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";

@@ -1,0 +1,21 @@
+#include "kometa.dtsi"
+
+// The dongle has no keys of its own: replace the matrix with a mock kscan.
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+&physical_layout0 {
+    kscan = <&mock_kscan>;
+};
+
+/delete-node/ &kscan0;

@@ -1,7 +1,21 @@
 include:
+  # Standalone: left half is central (USB / Bluetooth to host)
   - board: nice_nano@2.0.0//zmk
     shield: kometa_left
   - board: nice_nano@2.0.0//zmk
     shield: kometa_right
   - board: nice_nano@2.0.0//zmk
     shield: settings_reset
+
+  # Dongle mode: Prospector is central, both halves are peripherals
+  - board: nice_nano@2.0.0//zmk
+    shield: kometa_left
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: kometa_left_peripheral
+  - board: xiao_ble//zmk
+    shield: kometa_dongle prospector_adapter
+    cmake-args: -DCONFIG_PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR=n -DCONFIG_PROSPECTOR_FIXED_BRIGHTNESS=60
+    artifact-name: kometa_dongle_prospector
+  - board: xiao_ble//zmk
+    shield: settings_reset
+    artifact-name: settings_reset_xiao

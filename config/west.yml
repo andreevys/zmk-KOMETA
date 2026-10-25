@@ -2,10 +2,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: carrefinho
+      url-base: https://github.com/carrefinho
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: 8a44ef109ae301ce084b32dd5fe25200da9e402f
       import: app/west.yml
+    - name: prospector-zmk-module
+      remote: carrefinho
+      # feat/new-status-screens (Zephyr 4.1 compatible)
+      revision: ed98221f3b52b7066dbb10ba3af8a29150b93a5a
   self:
     path: config
